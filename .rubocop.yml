@@ -1,7 +1,4 @@
-inherit_from: .rubocop_todo.yml
-
-require:
-  
+require:  
 - rubocop-rspec
 - rubocop-rails
 
@@ -9,6 +6,7 @@ AllCops:
   Exclude:
     - 'db/schema.rb'
     - 'vendor/**/*'
+    - 'bin/**/*'
 
 Rails:
   Enabled: true
@@ -28,8 +26,8 @@ Style/MixinUsage:
 
 Metrics/BlockLength:
   Exclude:
-    - 'spec/**/*.rb'
     - 'lib/tasks/**/*.rake'
+  ExcludedMethods: ['describe']
 
 Metrics/LineLength:
   Max: 120 # aim for 80, but allow some extra length.
