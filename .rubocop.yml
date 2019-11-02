@@ -1,0 +1,38 @@
+require:
+  
+- rubocop-rspec
+- rubocop-rails
+
+AllCops:
+  Exclude:
+    - 'db/schema.rb'
+    - 'vendor/**/*'
+
+Rails:
+  Enabled: true
+
+Rails/HasManyOrHasOneDependent:
+  Enabled: false
+
+Documentation:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/MixinUsage:
+  Exclude:
+    - 'bin/**/*'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*.rb'
+    - 'lib/tasks/**/*.rake'
+
+Metrics/LineLength:
+  Max: 120 # aim for 80, but allow some extra length.
+  Exclude:
+    - 'config/routes.rb'
+
+RSpec/NestedGroups:
+  Max: 4

@@ -40,6 +40,8 @@ group :test do
 end
 
 group :development do
+  gem 'rubocop-rspec', require: false
+  gem 'rubocop-rails', require: false
   gem 'pry-rails'
   gem 'rails-erd'
   gem 'annotate'
