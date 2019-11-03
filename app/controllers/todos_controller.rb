@@ -3,18 +3,18 @@
 class TodosController < ApplicationController
   def index
     todos = Todo.all
-    render json: todos, status: :ok
+    render json: serialize(todos), status: :ok
   end
 
   def show
     todo = Todo.find(params[:id])
-    render json: todo, status: :ok
+    render json: serialize(todo), status: :ok
   end
 
   def create
     todo = Todo.new(todo_params)
     if todo.save
-      render json: todo, status: :created
+      render json: serialize(todo), status: :created
     else
       render json: todo.errors, status: :unprocessable_entity
     end
@@ -39,5 +39,9 @@ class TodosController < ApplicationController
 
   def todo_params
     params.require(:todo).permit(:name, :completed_at, :list_id)
+  end
+
+  def serialize(data)
+    TodoSerializer.new(data).serialized_json
   end
 end

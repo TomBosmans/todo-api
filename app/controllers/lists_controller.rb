@@ -3,18 +3,18 @@
 class ListsController < ApplicationController
   def index
     lists = List.all
-    render json: lists, status: :ok
+    render json: serialize(lists), status: :ok
   end
 
   def show
     list = List.find(params[:id])
-    render json: list, status: :ok
+    render json: serialize(list), status: :ok
   end
 
   def create
     list = List.new(list_params)
     if list.save
-      render json: list, status: :created
+      render json: serialize(list), status: :created
     else
       render json: list.errors, status: :unprocessable_entity
     end
@@ -39,5 +39,9 @@ class ListsController < ApplicationController
 
   def list_params
     params.require(:list).permit(:name, :description)
+  end
+
+  def serialize(data)
+    ListSerializer.new(data).serialized_json
   end
 end

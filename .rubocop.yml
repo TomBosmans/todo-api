@@ -37,5 +37,6 @@ Metrics/LineLength:
 Metrics/MethodLength:
   ExcludedMethods: ['change']
 
-RSpec/NestedGroups:
-  Max: 4
+RSpec/ExampleLength:
+  Exclude:
+    - 'spec/serializers/**/*'
