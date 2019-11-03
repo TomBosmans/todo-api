@@ -2,7 +2,8 @@
 
 class UsersController < ApplicationController
   def index
-    users = User.all
+    users = sort User.all
+    users = paginate users
     render json: serialize(users), status: :ok
   end
 
@@ -39,9 +40,5 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation)
-  end
-
-  def serialize(data)
-    UserSerializer.new(data).serialized_json
   end
 end

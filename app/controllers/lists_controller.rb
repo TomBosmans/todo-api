@@ -2,7 +2,8 @@
 
 class ListsController < ApplicationController
   def index
-    lists = List.all
+    lists = sort List.all
+    lists = paginate lists
     render json: serialize(lists), status: :ok
   end
 
@@ -39,9 +40,5 @@ class ListsController < ApplicationController
 
   def list_params
     params.require(:list).permit(:name, :description)
-  end
-
-  def serialize(data)
-    ListSerializer.new(data).serialized_json
   end
 end

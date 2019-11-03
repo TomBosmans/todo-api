@@ -2,7 +2,8 @@
 
 class TodosController < ApplicationController
   def index
-    todos = Todo.all
+    todos = sort Todo.all
+    todos = paginate todos
     render json: serialize(todos), status: :ok
   end
 
@@ -39,9 +40,5 @@ class TodosController < ApplicationController
 
   def todo_params
     params.require(:todo).permit(:name, :completed_at, :list_id)
-  end
-
-  def serialize(data)
-    TodoSerializer.new(data).serialized_json
   end
 end
