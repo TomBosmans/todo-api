@@ -41,6 +41,19 @@ RSpec.shared_examples 'json api resources controller' do |actions = %i[index sho
         get :index, params: params
         expect(resource_serializer).to have_received(:new)
       end
+
+      it 'paginates the resources' do
+        5.times { create_resource }
+        get :index, params: params.merge(page: { number: 2, size: 2 })
+        expect(JSON.parse(response.body)['data'].count).to eq 2
+      end
+
+      it 'sorts the resources' do
+        5.times { create_resource }
+        get :index, params: params.merge(sort: '-id')
+        ids = JSON.parse(response.body)['data'].map { |resource| resource['id'].to_i }
+        expect(ids).to eq(resource_model.order(id: :desc).ids)
+      end
     end
   end
 
