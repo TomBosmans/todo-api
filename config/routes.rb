@@ -2,16 +2,7 @@
 
 Rails.application.routes.draw do
   namespace :json_api do
-    resources :users, only: %w[index show create update destroy] do
-      scope module: :users do
-        resources :lists, only: %w[index show create update destroy]
-        namespace :relationships do
-          post :lists, to: 'lists#create'
-          patch :lists, to: 'lists#update'
-          delete :lists, to: 'lists#destroy'
-        end
-      end
-    end
+    resources :users, only: %w[index show create update destroy]
 
     resources :lists, only: %w[index show create update destroy] do
       scope module: :lists do
