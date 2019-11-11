@@ -19,9 +19,6 @@
 class Todo < ApplicationRecord
   belongs_to :list
 
-  attribute :name, :string
-  attribute :completed_at, :datetime
-
   validates :name, presence: true
 
   def completed?

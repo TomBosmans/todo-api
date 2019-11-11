@@ -14,8 +14,5 @@
 class List < ApplicationRecord
   has_many :todos
 
-  attribute :name, :string
-  attribute :description, :string
-
   validates :name, presence: true
 end

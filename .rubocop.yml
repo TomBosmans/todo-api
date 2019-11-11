@@ -27,7 +27,9 @@ Style/MixinUsage:
 Metrics/BlockLength:
   Exclude:
     - 'lib/tasks/**/*.rake'
-  ExcludedMethods: ['describe']
+    - 'config/routes.rb'
+    - 'spec/serializers/**/*.rb'
+  ExcludedMethods: ['describe', 'shared_examples']
 
 Metrics/LineLength:
   Max: 120 # aim for 80, but allow some extra length.

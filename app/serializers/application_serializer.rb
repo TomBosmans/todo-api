@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
-class ApplicationSerializer
-  include FastJsonapi::ObjectSerializer
+require 'routing'
 
-  set_key_transform :underscore
+class ApplicationSerializer
+  class << self
+    include Routing
+  end
 end
