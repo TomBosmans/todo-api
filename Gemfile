@@ -9,7 +9,7 @@ gem 'bcrypt', '~> 3.1.7' # Use Active Model has_secure_password
 gem 'bootsnap', '>= 1.4.2', require: false # Reduces boot times through caching; required in config/boot.rb
 gem 'fast_jsonapi' # A lightning fast JSON:API serializer for Ruby Objects.
 gem 'pg', '>= 0.18', '< 2.0' # Use postgresql as the database for Active Record
-gem 'puma', '~> 3.11' # Use Puma as the app server
+gem 'puma', '~> 3.12' # Use Puma as the app server
 gem 'rack-cors' # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rails', '~> 6.0.0' # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'redis', '~> 4.0' # Use Redis adapter to run Action Cable in production
